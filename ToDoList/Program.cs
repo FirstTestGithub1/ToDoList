@@ -53,7 +53,9 @@
         ShowTasks();
 
         Console.Write("Enter the number of the task to mark as completed: ");
-        int index = Console.Read();
+        int index = Convert.ToInt32(Console.ReadLine())-1;
+        Console.WriteLine(index);
+        Console.WriteLine(todoList.Count);
        if  (index >= 0 && index <= todoList.Count) {
             Console.WriteLine($"Task '{todoList[index]}' marked as completed!");
             todoList.RemoveAt(index);
