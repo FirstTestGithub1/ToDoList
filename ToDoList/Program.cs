@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-class Program {
+﻿class Program {
     static List<string> todoList = new List<string>();
 
     static void Main() {
-        Console.WriteLine("Welcome to the To-Do List!");
+        Console.WriteLine("Welcome to the To Do List!");
 
         while (true) {
             DisplayMenu();
@@ -23,7 +20,6 @@ class Program {
                     ShowTasks();
                     break;
                 case "4":
-                    Environment.Exit(0);
                     break;
                 default:
                     Console.WriteLine("Invalid choice. Please try again.");
@@ -33,7 +29,7 @@ class Program {
     }
 
     static void DisplayMenu() {
-        Console.WriteLine("\nMenu:");
+        Console.WriteLine("Menu:");
         Console.WriteLine("1. Add Task");
         Console.WriteLine("2. Mark Task as Completed");
         Console.WriteLine("3. Show Tasks");
@@ -56,8 +52,9 @@ class Program {
 
         ShowTasks();
 
-        Console.Write("Enter the index of the task to mark as completed: ");
-        if (int.TryParse(Console.ReadLine(), out int index) && index >= 0 && index < todoList.Count) {
+        Console.Write("Enter the number of the task to mark as completed: ");
+        int index = Console.Read();
+       if  (index >= 0 && index <= todoList.Count) {
             Console.WriteLine($"Task '{todoList[index]}' marked as completed!");
             todoList.RemoveAt(index);
         }
@@ -67,11 +64,14 @@ class Program {
     }
 
     static void ShowTasks() {
+        Console.Clear();
         if (todoList.Count == 0) {
             Console.WriteLine("No tasks available.");
+            Console.WriteLine("Press any key to return for the main menu.");
+            Console.ReadLine();
         }
         else {
-            Console.WriteLine("\nTasks:");
+            Console.WriteLine("Tasks:");
             for (int i = 0; i < todoList.Count; i++) {
                 Console.WriteLine($"{i + 1}. {todoList[i]}");
             }
